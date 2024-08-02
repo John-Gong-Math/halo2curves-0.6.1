@@ -13,7 +13,7 @@
 edition = "2021"
 rust-version = "1.63.0"
 name = "halo2curves"
-version = "0.6.1"
+version = "0.6.0"
 authors = ["Privacy Scaling Explorations team"]
 description = "Elliptic curve implementations and wrappers for halo2 library"
 readme = "README.md"
@@ -52,6 +52,7 @@ harness = false
 [[bench]]
 name = "msm"
 harness = false
+required-features = ["multicore"]
 
 [dependencies.blake2b_simd]
 version = "1"
@@ -114,7 +115,7 @@ optional = true
 version = "1.1.0"
 
 [dependencies.subtle]
-version = "2.5"
+version = "2.4"
 
 [dev-dependencies.ark-std]
 version = "0.3"
@@ -128,9 +129,6 @@ features = ["html_reports"]
 
 [dev-dependencies.hex]
 version = "0.4"
-
-[dev-dependencies.impls]
-version = "1"
 
 [dev-dependencies.rand_chacha]
 version = "0.3.1"
@@ -150,8 +148,8 @@ derive_serde = [
     "serde/derive",
     "serde_arrays",
     "hex",
-    "pasta_curves/serde",
 ]
+prefetch = []
 print-trace = ["ark-std/print-trace"]
 
 [target."cfg(all(target_arch = \"wasm32\", target_os = \"unknown\"))".dev-dependencies.getrandom]
